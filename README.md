@@ -30,9 +30,9 @@
 
 作者： 平江
 
-邮箱: pingjiang1989@gmail.com
+邮箱： pingjiang1989@gmail.com
 
-主页：[http://pingjiang.github.io](http://pingjiang.github.io)
+主页： [http://pingjiang.github.io](http://pingjiang.github.io)
 
 
 
