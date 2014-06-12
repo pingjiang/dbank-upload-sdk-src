@@ -81,5 +81,31 @@ public class IOUtils {
 
         return path;
     }
+
+    /**
+     * 保存文件
+     *
+     * @param localFile
+     * @param in
+     * @param contentLength
+     * @throws IOException
+     */
+    public static void writeInputStreamToFile(File localFile, InputStream in, int contentLength) throws IOException {
+        final int BUFFER_SIZE = 1024;
+        OutputStream outPutStream = null;
+        try {
+            outPutStream = new FileOutputStream(localFile);
+            byte[] buffer = new byte[BUFFER_SIZE];
+            int read = -1;
+            int offset = 0;
+            while ((read = in.read(buffer)) != -1) {
+                outPutStream.write(buffer, offset, read);
+                offset += read;
+            }
+        } finally {
+            outPutStream.flush();
+            outPutStream.close();
+        }
+    }
 }
 

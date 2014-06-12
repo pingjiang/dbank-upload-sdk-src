@@ -1,6 +1,7 @@
 package com.huawei.cloud.dbank;
 
 import com.huawei.cloud.dbank.util.CryptUtils;
+import com.huawei.cloud.dbank.util.DBankUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -77,6 +78,25 @@ public class DBankRequest {
         return _fileURL;
     }
 
+    /**
+     * http://opendocs.dbankcloud.com/json.sh?mode=open
+     * http://{appname}.dbankcloud.com/{path}/{filename}?ts=1302392423&key=xxxxxxxxx
+     *
+     * @param appName
+     * @param ts
+     * @param key
+     * @return
+     */
+    public String getDownloadURL(String appName, long ts, String key) {
+        return String.format("http://%s.dbankcloud.com/%s?ts=%dl&key=%s", appName,
+                path.startsWith("/") ? path.substring(1) : path, ts, key);
+    }
+
+    public String getDownloadURL(String appName, long ts, String key, boolean openMode) {
+        String url = getDownloadURL(appName, ts, key);
+        return openMode ? (url + "&mode=open") : url;
+    }
+
     public String getInitURL() {
         return getURL() + "?init";
     }
@@ -118,7 +138,7 @@ public class DBankRequest {
 
     public Map<String, String> createHeaders(boolean includeContentRange, long offset, int length) throws DBankException {
         Map<String, String> headers = new TreeMap<String, String>();
-        headers.put("nsp-ts", String.valueOf(System.currentTimeMillis() / 1000L));
+        headers.put("nsp-ts", String.valueOf(DBankUtils.nowSeconds()));
         headers.put("nsp-file-md5", getFileMD5());
         headers.put("nsp-file-size", String.valueOf(localFile == null ? fileLength : localFile.length()));
         headers.put("nsp-content-md5", getContentMD5());
@@ -158,4 +178,5 @@ public class DBankRequest {
 
         return _fileContentMD5;
     }
+
 }

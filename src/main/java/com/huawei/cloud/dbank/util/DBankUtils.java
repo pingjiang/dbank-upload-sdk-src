@@ -149,4 +149,8 @@ public class DBankUtils {
 
         return sb.toString();
     }
+
+    public static long nowSeconds() {
+        return System.currentTimeMillis() / 1000L;
+    }
 }
