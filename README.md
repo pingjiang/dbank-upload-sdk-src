@@ -1,9 +1,12 @@
 华为云加速 DBank JAVA SDK 重构版本
 ===============================
 
+
 当我发现华为网盘支持云加速来定制开发后，我就开始研究华为提供的二次开发的SDK，发现SDK对REST接口的封装不是很合理，所以我花了两天的时间对其做了一个深度的重构方便日后开发更加负责的业务。
 
+
 华为云加速管理主页： [http://cloud.dbank.com/manager.html?v=2.9.18b1399537812208](http://cloud.dbank.com/manager.html?v=2.9.18b1399537812208)
+
 华为云加速SDK帮助文档： [http://cloud.dbank.com/help.html?v=2.9.18b1399537812208](http://cloud.dbank.com/help.html?v=2.9.18b1399537812208)
 
 以前代码存在的问题
@@ -22,6 +25,14 @@
 3. 编写单元测试用例，采用测试驱动的方法来重构和开发新功能。
 4. 增加 `dbank.properties` 和 `log4j.properties` 等配置文件。
 
+联系我
+-----
+
+作者： 平江
+
+邮箱: pingjiang1989@gmail.com
+
+主页：[http://pingjiang.github.io](http://pingjiang.github.io)
 
 
 
